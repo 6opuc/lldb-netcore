@@ -4,7 +4,7 @@
 - netcore 2.0.3:
 ```
 docker build \
-	--tag lldb-netcore:2.0.3 \
+	--tag 6opuc/lldb-netcore:2.0.3 \
 	--build-arg BASE_IMAGE=microsoft/dotnet:2.0.3-sdk \
 	--build-arg CORECLR_BRANCH=release/2.0.0 \
 	--build-arg LLDB_PACKAGE_NAME=lldb-4.0 \
@@ -15,5 +15,5 @@ docker build \
 ## How to use
 - netcore 2.0.3:
 ```
-docker run -it -v /stripe/upload/coredump:/tmp/coredump lldb-netcore:2.0.3
+docker run -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ```
