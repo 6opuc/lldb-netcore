@@ -56,6 +56,12 @@ HResult: 80004003
 help
 ```
 
+### Analyze running container(TODO)
+docker run --rm -it --cap-add sys_admin --cap-add sys_ptrace --net=container:b5063ef5787c --pid=container:b5063ef5787c -v /tmp:/tmp 6opuc/lldb-netcore:2.0.3 /bin/bash
+/usr/share/dotnet/shared/Microsoft.NETCore.App/2.0.3/createdump -u -f /tmp/coredump 7
+exit
+docker run -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+
 ## How to build
 ### netcore 2.0.3:
 ```bash
