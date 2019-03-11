@@ -3,7 +3,7 @@ Docker image with lldb debugger and SOS plugin, compiled from sources with lldb 
 By default loads process coredump from /tmp/coredump, loads SOS plugin and prints current exception, leaving lldb shell open.
 
 ## How to build
-- netcore 2.0.3:
+### netcore 2.0.3:
 ```bash
 docker build \
 	--tag 6opuc/lldb-netcore:2.0.3 \
@@ -13,27 +13,27 @@ docker build \
 	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
 	.
 ```
-BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
-CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch to build SOS plugin from
-LLDB_PACKAGE_NAME - Package name of lldb debugger in base image
-LLDB_BINARY_PATH - Path to binary with lldb debugger after package installation
+- BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
+- CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch to build SOS plugin from
+- LLDB_PACKAGE_NAME - Package name of lldb debugger in base image
+- LLDB_BINARY_PATH - Path to binary with lldb debugger after package installation
 
 ## How to use
-- netcore 2.0.3:
+### netcore 2.0.3:
 ```bash
 docker run -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ```
-/stripe/upload/coredump - Path to coredump of crashed process on docker host machine
+- /stripe/upload/coredump - Path to coredump of crashed process on docker host machine
 
 ## Usecases
-- Container crashed
+### Container crashed
 
 1. Copy crashed process working directory(coredump is automatically created in crashed process working directory):
 ```bash
 docker cp 79686a7aff63:/app /tmp
 ```
-79686a7aff63 - id of container with crashed process
-/app - crashed process working directory inside container filesystem
+- 79686a7aff63 - id of container with crashed process
+- /app - crashed process working directory inside container filesystem
 
 2. Find crashed process coredump:
 ```bash
