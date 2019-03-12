@@ -98,7 +98,7 @@ help
 ```
 
 ## How to build
-### netcore 2.0.3:
+### netcore 2.1.8:
 ```bash
 docker build \
 	--tag 6opuc/lldb-netcore:2.1.8 \
