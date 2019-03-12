@@ -105,8 +105,6 @@ docker build \
 	--tag 6opuc/lldb-netcore:2.0.3 \
 	--build-arg BASE_IMAGE=microsoft/dotnet:2.0.3-sdk \
 	--build-arg CORECLR_BRANCH=release/2.0.0 \
-	--build-arg LLDB_PACKAGE_NAME=lldb-4.0 \
-	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
 	.
 ```
 ### netcore 2.2:
@@ -115,8 +113,6 @@ docker build \
 	--tag 6opuc/lldb-netcore:2.2 \
     	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2 \
     	--build-arg CORECLR_BRANCH=release/2.2 \
-    	--build-arg LLDB_PACKAGE_NAME=lldb-4.0 \
-    	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
 	.
 ```
 ### netcore 2.2.2:
@@ -125,8 +121,6 @@ docker build \
 	--tag 6opuc/lldb-netcore:2.2.2 \
     	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104 \
     	--build-arg CORECLR_BRANCH=v2.2.2 \
-    	--build-arg LLDB_PACKAGE_NAME=lldb-4.0 \
-    	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
 	.
 ```
 - BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
