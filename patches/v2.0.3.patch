@@ -1,0 +1,24 @@
+From cfa9afc124fd86d19959b4bca45b7c7453b999c3 Mon Sep 17 00:00:00 2001
+From: Boris Nadezhdin <boris.nadezhdin@gmail.com>
+Date: Sun, 10 Mar 2019 12:59:42 +0000
+Subject: [PATCH] ---
+
+---
+ src/ToolBox/SOS/lldbplugin/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ToolBox/SOS/lldbplugin/CMakeLists.txt b/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
+index fe816abebd..ef9846d1ab 100644
+--- a/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
++++ b/src/ToolBox/SOS/lldbplugin/CMakeLists.txt
+@@ -76,6 +76,7 @@ endif()
+ find_path(LLDB_H "lldb/API/LLDB.h" PATHS "${WITH_LLDB_INCLUDES}" NO_DEFAULT_PATH)
+ find_path(LLDB_H "lldb/API/LLDB.h")
+
++find_path(LLDB_H "lldb/API/LLDB.h" PATHS "/usr/lib/llvm-4.0/include")
+ find_path(LLDB_H "lldb/API/LLDB.h" PATHS "/usr/lib/llvm-3.9/include")
+ find_path(LLDB_H "lldb/API/LLDB.h" PATHS "/usr/lib/llvm-3.8/include")
+ find_path(LLDB_H "lldb/API/LLDB.h" PATHS "/usr/lib/llvm-3.7/include")
+--
+2.11.0
+
