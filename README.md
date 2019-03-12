@@ -124,6 +124,4 @@ docker build \
 	.
 ```
 - BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
-- CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch to build SOS plugin from
-- LLDB_PACKAGE_NAME - Package name of lldb debugger in base image
-- LLDB_BINARY_PATH - Path to binary with lldb debugger after package installation
+- CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch/tag to build SOS plugin from
