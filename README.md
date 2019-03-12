@@ -5,7 +5,7 @@ By default loads process coredump from /tmp/coredump, loads SOS plugin and print
 ## How to use
 ### netcore 2.0.3:
 ```bash
-docker run -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ```
 - /stripe/upload/coredump - Path to coredump of crashed process on docker host machine
 
@@ -30,7 +30,7 @@ example output:
 
 3. Open coredump with debugger:
 ```bash
-docker run -it -v /tmp/app/core.26939:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /tmp/app/core.26939:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ```
 example output:
 ```
@@ -81,7 +81,7 @@ exit
 
 5. Open coredump with debugger:
 ```bash
-docker run -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ```
 example output:
 ```
