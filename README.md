@@ -3,9 +3,8 @@ Docker image with lldb debugger and SOS plugin, compiled from sources with lldb 
 By default loads process coredump from /tmp/coredump, loads SOS plugin and prints current exception, leaving lldb shell open.
 
 ## How to use
-### netcore 2.0.3:
 ```bash
-docker run --rm -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore
 ```
 - /stripe/upload/coredump - Path to coredump of crashed process on docker host machine
 
@@ -30,7 +29,7 @@ example output:
 
 3. Open coredump with debugger:
 ```bash
-docker run --rm -it -v /tmp/app/core.26939:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /tmp/app/core.26939:/tmp/coredump 6opuc/lldb-netcore
 ```
 example output:
 ```
@@ -61,7 +60,7 @@ help
 
 2. Run container with createdump utility(it needs sys_admin and sys_ptrace privileges. If your running container already has these privileges you can attach to running container and run createdump utility from there):
 ```bash
-docker run --rm -it --cap-add sys_admin --cap-add sys_ptrace --net=container:b5063ef5787c --pid=container:b5063ef5787c -v /tmp:/tmp 6opuc/lldb-netcore:2.0.3 /bin/bash
+docker run --rm -it --cap-add sys_admin --cap-add sys_ptrace --net=container:b5063ef5787c --pid=container:b5063ef5787c -v /tmp:/tmp 6opuc/lldb-netcore /bin/bash
 ```
 - b5063ef5787c - id of container you need to analyze
 - /tmp - temporary directory on host, where coredump will be created
@@ -74,14 +73,14 @@ In this example PID is "7"
 
 4. Create coredump of dotnet process and exit from container:
 ```bash
-/usr/share/dotnet/shared/Microsoft.NETCore.App/2.0.3/createdump -u -f /tmp/coredump 7
+createdump -u -f /tmp/coredump 7
 exit
 ```
 - 7 is dotnet process PID
 
 5. Open coredump with debugger:
 ```bash
-docker run --rm -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+docker run --rm -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore
 ```
 example output:
 ```
@@ -102,17 +101,9 @@ help
 ### netcore 2.0.3:
 ```bash
 docker build \
-	--tag 6opuc/lldb-netcore:2.0.3 \
-	--build-arg BASE_IMAGE=microsoft/dotnet:2.0.3-sdk \
-	--build-arg CORECLR_BRANCH=release/2.0.0 \
-	.
-```
-### netcore 2.2:
-```bash
-docker build \
-	--tag 6opuc/lldb-netcore:2.2 \
-    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2 \
-    	--build-arg CORECLR_BRANCH=release/2.2 \
+	--tag 6opuc/lldb-netcore:2.1.8 \
+    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.1.504 \
+    	--build-arg CORECLR_BRANCH=v2.1.8 \
 	.
 ```
 ### netcore 2.2.2:
