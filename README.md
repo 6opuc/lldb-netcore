@@ -120,6 +120,7 @@ docker build \
 	--tag 6opuc/lldb-netcore:2.0.3 \
 	--build-arg BASE_IMAGE=microsoft/dotnet:2.0.3-sdk \
 	--build-arg CORECLR_BRANCH=v2.0.3 \
+	.
 ```
 - BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
 - CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch/tag to build SOS plugin from
