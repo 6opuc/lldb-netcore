@@ -98,6 +98,14 @@ help
 ```
 
 ## How to build
+### netcore 2.2.2:
+```bash
+docker build \
+	--tag 6opuc/lldb-netcore:2.2.2 \
+    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104 \
+    	--build-arg CORECLR_BRANCH=v2.2.2 \
+	.
+```
 ### netcore 2.1.8:
 ```bash
 docker build \
@@ -106,13 +114,12 @@ docker build \
     	--build-arg CORECLR_BRANCH=v2.1.8 \
 	.
 ```
-### netcore 2.2.2:
-```bash
+### netcore 2.0.3:
+```
 docker build \
-	--tag 6opuc/lldb-netcore:2.2.2 \
-    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104 \
-    	--build-arg CORECLR_BRANCH=v2.2.2 \
-	.
+	--tag 6opuc/lldb-netcore:2.0.3 \
+	--build-arg BASE_IMAGE=microsoft/dotnet:2.0.3-sdk \
+	--build-arg CORECLR_BRANCH=v2.0.3 \
 ```
 - BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
 - CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch/tag to build SOS plugin from
