@@ -109,6 +109,16 @@ docker build \
 	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
 	.
 ```
+### netcore 2.2:
+```bash
+docker build \
+	--tag 6opuc/lldb-netcore:2.2 \
+    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2 \
+    	--build-arg CORECLR_BRANCH=release/2.2 \
+    	--build-arg LLDB_PACKAGE_NAME=lldb-4.0 \
+    	--build-arg LLDB_BINARY_PATH=lldb-4.0 \
+	.
+```
 - BASE_IMAGE - Base image of dotnet sdk. Used both at build time and runtime.
 - CORECLR_BRANCH - coreclr repository(https://github.com/dotnet/coreclr.git) branch to build SOS plugin from
 - LLDB_PACKAGE_NAME - Package name of lldb debugger in base image
