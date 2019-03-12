@@ -12,7 +12,7 @@ docker run -it -v /stripe/upload/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
 ## Usecases
 ### Container crashed
 
-1. Copy crashed process working directory(coredump is automatically created in crashed process working directory):
+1. Copy crashed process working directory(coredump is automatically created in crashed process working directory) to temporary directory on host:
 ```bash
 docker cp 79686a7aff63:/app /tmp
 ```
@@ -56,11 +56,47 @@ HResult: 80004003
 help
 ```
 
-### Analyze running container(TODO)
+### Analyze running container
+1. Get id of docker container(docker ps) you need to analyze. In this example it is "b5063ef5787c"
+
+2. Run container with createdump utility(it needs sys_admin and sys_ptrace privileges. If your running container already has these privileges you can attach to running container and run createdump utility from there):
+```bash
 docker run --rm -it --cap-add sys_admin --cap-add sys_ptrace --net=container:b5063ef5787c --pid=container:b5063ef5787c -v /tmp:/tmp 6opuc/lldb-netcore:2.0.3 /bin/bash
+```
+- b5063ef5787c - id of container you need to analyze
+- /tmp - temporary directory on host, where coredump will be created
+
+3. Find PID of dotnet process you need to analyze:
+```bash
+ps aux
+```
+In this example PID is "7"
+
+4. Create coredump of dotnet process and exit from container:
+```bash
 /usr/share/dotnet/shared/Microsoft.NETCore.App/2.0.3/createdump -u -f /tmp/coredump 7
 exit
+```
+- 7 is dotnet process PID
+
+5. Open coredump with debugger:
+```bash
 docker run -it -v /tmp/coredump:/tmp/coredump 6opuc/lldb-netcore:2.0.3
+```
+example output:
+```
+(lldb) target create "/usr/bin/dotnet" --core "/tmp/coredump"
+Core file '/tmp/coredump' (x86_64) was loaded.
+(lldb) plugin load /coreclr/libsosplugin.so
+(lldb) sos PrintException
+There is no current managed exception on this thread
+(lldb)
+```
+
+6. Continue exploring coredump in lldb shell:
+```
+help
+```
 
 ## How to build
 ### netcore 2.0.3:
