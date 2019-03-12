@@ -1,7 +1,7 @@
-ARG BASE_IMAGE
+ARG BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104
 FROM $BASE_IMAGE AS build
-ARG CORECLR_BRANCH
-ARG LLDB_PACKAGE_NAME
+ARG CORECLR_BRANCH=v2.2.2
+ARG LLDB_PACKAGE_NAME=lldb-4.0
 RUN apt-get update && \
 	apt-get install -y \
 		cmake \
@@ -28,8 +28,8 @@ RUN if [ -f /patches/$CORECLR_BRANCH.patch ] ; then git apply /patches/$CORECLR_
 RUN ./build.sh clang4.0 
 
 FROM $BASE_IMAGE
-ARG LLDB_PACKAGE_NAME
-ARG LLDB_BINARY_PATH
+ARG LLDB_PACKAGE_NAME=lldb-4.0
+ARG LLDB_BINARY_PATH=lldb-4.0
 RUN apt-get update && \
 	apt-get install -y \
 		$LLDB_PACKAGE_NAME && \
