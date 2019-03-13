@@ -99,20 +99,28 @@ help
 ```
 
 ## How to build
+### netcore 2.2.3:
+```bash
+docker build \
+	--tag 6opuc/lldb-netcore:2.2.3 \
+   	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.105 \
+   	--build-arg CORECLR_BRANCH=v2.2.3 \
+	.
+```
 ### netcore 2.2.2:
 ```bash
 docker build \
 	--tag 6opuc/lldb-netcore:2.2.2 \
-    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104 \
-    	--build-arg CORECLR_BRANCH=v2.2.2 \
+   	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.104 \
+   	--build-arg CORECLR_BRANCH=v2.2.2 \
 	.
 ```
 ### netcore 2.1.8:
 ```bash
 docker build \
 	--tag 6opuc/lldb-netcore:2.1.8 \
-    	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.1.504 \
-    	--build-arg CORECLR_BRANCH=v2.1.8 \
+	--build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.1.504 \
+   	--build-arg CORECLR_BRANCH=v2.1.8 \
 	.
 ```
 ### netcore 2.0.3:
