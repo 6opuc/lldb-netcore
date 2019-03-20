@@ -35,5 +35,5 @@ RUN apt-get update && \
 COPY --from=build /coreclr/bin/Product/Linux.x64.Debug /coreclr
 
 ENV LLDB_BINARY_PATH ${LLDB_BINARY_PATH}
-CMD ["/bin/bash", "-c", "lldb-4.0 /usr/bin/dotnet --core /tmp/coredump -o 'plugin load /coreclr/libsosplugin.so' -o 'sos PrintException'"]
+CMD ["/bin/bash", "-c", "lldb-4.0 /usr/bin/dotnet --core /tmp/coredump -o 'plugin load /coreclr/libsosplugin.so' -o 'sos PrintException -lines'"]
 	
