@@ -45,7 +45,6 @@ InnerException:   <none>
 StackTrace (generated):
     SP               IP               Function
     00007FFCE0A312F0 00007F3FD7940481 test.dll!test.Program.Main(System.String[])+0x1
-
 StackTraceString: <none>
 HResult: 80004003
 (lldb)

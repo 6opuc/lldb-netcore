@@ -36,4 +36,3 @@ COPY --from=build /coreclr/bin/Product/Linux.x64.Debug /coreclr
 
 ENV COREDUMP_PATH /tmp/coredump
 CMD /usr/bin/lldb-4.0 /usr/bin/dotnet --core $COREDUMP_PATH -o 'plugin load /coreclr/libsosplugin.so' -o 'sos PrintException -lines'
-	
