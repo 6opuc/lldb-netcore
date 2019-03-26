@@ -31,9 +31,9 @@ RUN apt-get update && \
 	apt-get install -y \
 		lldb-4.0 && \
 	rm -rf /var/lib/apt/lists/* && \
-	ln -s $(find /usr/share/dotnet/shared/Microsoft.NETCore.App/ -name createdump) /usr/bin/createdump
+	ln -s /coreclr/createdump /usr/bin/createdump
 COPY --from=build /coreclr/bin/Product/Linux.x64.Debug /coreclr
 
-ENV LLDB_BINARY_PATH ${LLDB_BINARY_PATH}
-CMD ["/bin/bash", "-c", "lldb-4.0 /usr/bin/dotnet --core /tmp/coredump -o 'plugin load /coreclr/libsosplugin.so' -o 'sos PrintException'"]
+ENV COREDUMP_PATH /tmp/coredump
+CMD /usr/bin/lldb-4.0 /usr/bin/dotnet --core $COREDUMP_PATH -o 'plugin load /coreclr/libsosplugin.so' -o 'sos PrintException -lines'
 	
