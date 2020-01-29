@@ -1,6 +1,6 @@
-ARG BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.401
+ARG BASE_IMAGE=mcr.microsoft.com/dotnet/core/sdk:2.2.207
 FROM $BASE_IMAGE AS build
-ARG CORECLR_BRANCH=v2.2.6
+ARG CORECLR_BRANCH=v2.2.8
 RUN apt-get update && \
 	apt-get install -y \
 		cmake \
